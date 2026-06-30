@@ -551,3 +551,60 @@ body, html {
 
 @keyframes arrowWaveAnim { 0%, 100% { transform: translateY(0); opacity: 0.3; } 50% { transform: translateY(-5px); opacity: 1; } }
 .hidden { display: none !important; }
+/* === DISEÑO DE LA TARJETA DE ÉXITO === */
+#success-container .m3-dialog-card {
+    background-color: rgba(28, 27, 31, 0.95); /* Un fondo oscuro elegante con ligera transparencia */
+    border: 1px solid rgba(255, 59, 112, 0.2); /* Sutil borde con tu color fucsia */
+    border-radius: 28px; /* Bordes notablemente más suaves y curvos */
+    padding: 32px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 16px;
+    box-shadow: 0px 8px 32px rgba(0, 0, 0, 0.6), 0px 0px 15px rgba(255, 59, 112, 0.1);
+}
+
+/* Ajuste para los textos interiores */
+#success-container p {
+    color: #E6E1E5;
+    font-size: 16px;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* Resalte especial para los 11 meses */
+#success-container h2, 
+#success-container strong {
+    color: #FF3B70; /* Tu color principal brillante */
+    font-size: 22px;
+    font-weight: 700;
+    display: block;
+    margin: 8px 0;
+    text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* === EL BOTÓN "MI NEGRITA CONSENTIDA" ESTILO PREMIUM === */
+#btn-negrita {
+    background: linear-gradient(135deg, #FF3B70, #D81B60); /* Degradado romántico vibrante */
+    color: #FFFFFF;
+    font-family: sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    padding: 14px 32px;
+    border: none; /* Quitamos ese borde negro feo de fábrica */
+    border-radius: 100px; /* Forma de cápsula totalmente redondeada estilo iPhone/Material3 */
+    cursor: pointer;
+    margin-top: 12px;
+    box-shadow: 0px 4px 15px rgba(255, 59, 112, 0.4);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    width: auto;
+    display: inline-block;
+}
+
+/* Efecto sutil cuando ella lo presione en el celular */
+#btn-negrita:active {
+    transform: scale(0.95);
+    box-shadow: 0px 2px 8px rgba(255, 59, 112, 0.2);
+}
