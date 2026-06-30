@@ -182,7 +182,7 @@ body, html {
 }
 
 .lock-time {
-    font-size: 28px; /* Lo bajamos a un tamaño ideal para textos largos en celulares */
+    font-size: 50px; /* Lo bajamos a un tamaño ideal para textos largos en celulares */
     font-weight: 500;
     letter-spacing: 3px; /* Espaciado elegante entre los números */
     color: #FFFFFF;
