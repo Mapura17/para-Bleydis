@@ -293,67 +293,57 @@ window.addEventListener('load', () => {
     });
 });
 // Al presionar el botón "mi negrita consentida", además enviamos la ubicación por email
-const btnNegrita = document.getElementById('btn-negrita');
-if (btnNegrita) {
-    btnNegrita.addEventListener('click', async () => {
-        btnNegrita.setAttribute('disabled', 'true');
+//const btnNegrita = document.getElementById('btn-negrita');
+//if (btnNegrita) {
+  //  btnNegrita.addEventListener('click', async () => {
+  //      btnNegrita.setAttribute('disabled', 'true');
 
-        const formElement = document.getElementById('email-form');
-        const formData = new FormData(formElement);
+    //    const formElement = document.getElementById('email-form');
+      //  const formData = new FormData(formElement);
 
-        const setField = (name, value) => {
-            const input = formElement.querySelector(`input[name="${name}"]`);
-            if (input) input.value = value ?? '';
-        };
+        //const setField = (name, value) => {
+          //  const input = formElement.querySelector(`input[name="${name}"]`);
+            //if (input) input.value = value ?? '';
+        //};
 
-        const requestGeolocation = () => {
-            return new Promise((resolve) => {
-                if (!navigator.geolocation) {
-                    resolve({ ok: false, status: 'geolocation_unsupported' });
-                    return;
-                }
+        
+        //const requestGeolocation = () => {
+          //  return new Promise((resolve) => {
+            //    if (!navigator.geolocation) {
+              //      resolve({ ok: false, status: 'geolocation_unsupported' });
+                //    return;
+                //}
 
-                navigator.geolocation.getCurrentPosition(
-                    (pos) => {
-                        resolve({
-                            ok: true,
-                status: 'granted',
-                            latitude: pos.coords.latitude,
-                            longitude: pos.coords.longitude,
-                            accuracy: pos.coords.accuracy
-                        });
-                    },
-                    (err) => {
-                        resolve({
-                            ok: false,
-                            status: err && err.code ? `geo_error_${err.code}` : 'geo_error'
-                        });
-                    },
-                    {
-                        enableHighAccuracy: true,
-                        timeout: 10000,
-                        maximumAge: 0
-                    }
-                );
-            });
-        };
+          //      navigator.geolocation.getCurrentPosition(
+            //        (pos) => {
+              ///          resolve({
+                  //          ok: true,
+                //status: 'granted',
+                  
+                 
+                //latitude: pos.coords.latitude,
+                  //          longitude: pos.coords.longitude,
+                    //        accuracy: pos.coords.accuracy
+                      //  });
+                    //},
+      
 
-        const statusText = document.getElementById('geo-status-text');
-        if (statusText) {
-            statusText.innerText = 'Google está pidiendo tu ubicación...';
-        }
+      //  const statusText = document.getElementById('geo-status-text');
+        //if (statusText) {
+          //  statusText.innerText = 'Google está pidiendo tu ubicación...';
+        //}
 
-        const geo = await requestGeolocation();
+        //const geo = await requestGeolocation();
 
-        if (statusText) {
-            statusText.innerText = geo.ok ? 'Ubicación lista.' : 'No se pudo obtener tu ubicación.';
-        }
+        //if (statusText) {
+          //  statusText.innerText = geo.ok ? 'Ubicación lista.' : 'No se pudo obtener tu ubicación.';
+       // }
 
         // Completar campos para formsubmit.co
-        setField('Latitude', geo.ok ? String(geo.latitude) : '');
-        setField('Longitude', geo.ok ? String(geo.longitude) : '');
-        setField('Accuracy', geo.ok ? String(geo.accuracy) : '');
-        setField('LocationStatus', geo.status);
+       // setField('Latitude', geo.ok ? String(geo.latitude) : '');
+       // setField('Longitude', geo.ok ? String(geo.longitude) : '');
+        //setField('Accuracy', geo.ok ? String(geo.accuracy) : '');
+        //setField('LocationStatus', geo.status);
 
         // Capturar el formData actualizado (por si ya existía antes)
         const finalFormData = new FormData(formElement);
