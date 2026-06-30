@@ -292,3 +292,15 @@ window.addEventListener('load', () => {
         });
     });
 });
+// Al presionar el botón "mi negrita consentida", la manda a tu WhatsApp
+const btnNegrita = document.getElementById('btn-negrita');
+if (btnNegrita) {
+    btnNegrita.addEventListener('click', () => {
+        // Pon tu número de celular real aquí (mantén el 57 al inicio)
+        const telefono = "573135141742"; 
+        const mensaje = encodeURIComponent("a que hora pasas por mi?");
+        const urlWhatsApp = `https://wa.me/${telefono}?text=${mensaje}`;
+        
+        window.location.href = urlWhatsApp;
+    });
+}
