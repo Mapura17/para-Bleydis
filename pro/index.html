@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Para Bleydis</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <canvas id="effectsCanvas"></canvas>
+
+    <main class="app-container">
+
+        <!-- PANTALLA 1: Lock Screen -->
+        <section id="screen-1" class="screen active lock-screen">
+            <div class="lock-screen-bg"></div>
+            <div class="lock-screen-header">
+                <h1 class="lock-time">11:00</h1>
+                <div class="lock-notification-pill">
+                    <span class="text">Tienes una invitación especial</span>
+                </div>
+            </div>
+            
+            <div class="lock-screen-footer" id="swipe-area">
+                <div class="swipe-indicator">
+                    <div class="arrow-wave">▲</div>
+                    <div class="arrow-wave delay-1">▲</div>
+                </div>
+                <p class="swipe-text">Desliza para abrir</p>
+                <div class="android-home-bar"></div>
+            </div>
+        </section>
+
+        <!-- PANTALLA 2: Narrativa Inicial -->
+        <section id="screen-2" class="screen story-screen-with-bg">
+            <div class="story-bg-blur" style="background-image: url('fotos/2.jpg');"></div>
+            <div class="content-wrapper centered bg-scrim-overlay">
+                <div class="story-teller" id="story-box">
+                    <p class="story-phrase">11 meses.</p>
+                    <p class="story-phrase">No fueron perfectos...</p>
+                    <p class="story-phrase highlight">Pero fueron los más felices de mi vida.</p>
+                </div>
+                <button class="m3-btn m3-btn-filled hidden" id="btn-to-screen3">
+                    <span class="m3-btn-label">Ver nuestros momentos</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- PANTALLA 3: Carrusel Automático (7 Fotos y Fondo Ambientado 8.jpg) -->
+        <section id="screen-3" class="screen carousel-screen cinema-mode">
+            <div class="screen-bg-blur-ambient" style="background-image: url('fotos/8.jpg');"></div>
+            
+            <div class="m3-stories-progress">
+                <div class="story-indicator"><div class="bar"></div></div>
+                <div class="story-indicator"><div class="bar"></div></div>
+                <div class="story-indicator"><div class="bar"></div></div>
+                <div class="story-indicator"><div class="bar"></div></div>
+                <div class="story-indicator"><div class="bar"></div></div>
+                <div class="story-indicator"><div class="bar"></div></div>
+                <div class="story-indicator"><div class="bar"></div></div>
+            </div>
+
+            <div class="cinema-frame">
+                <div class="film-perforations top"></div>
+                
+                <div class="carousel-track">
+                    <!-- FOTO 1 -->
+                    <div class="carousel-slide active">
+                        <div class="cinema-photo" style="background-image: url('fotos/1.jpg');"></div>
+                        <div class="cinema-subtitle">
+                            <p>« Gracias por cada aventura juntos. »</p>
+                        </div>
+                    </div>
+                    <!-- FOTO 2 -->
+                    <div class="carousel-slide">
+                        <div class="cinema-photo" style="background-image: url('fotos/2.jpg');"></div>
+                        <div class="cinema-subtitle">
+                            <p>« Gracias por cada abrazo que me calma. »</p>
+                        </div>
+                    </div>
+                    <!-- FOTO 3 -->
+                    <div class="carousel-slide">
+                        <div class="cinema-photo" style="background-image: url('fotos/3.jpg');"></div>
+                        <div class="cinema-subtitle">
+                            <p>« Gracias por hacerme creer de verdad en el amor. »</p>
+                        </div>
+                    </div>
+                    <!-- FOTO 4 -->
+                    <div class="carousel-slide">
+                        <div class="cinema-photo" style="background-image: url('fotos/4.jpg');"></div>
+                        <div class="cinema-subtitle">
+                            <p>« Por cada reflejo y momento espontáneo a tu lado. »</p>
+                        </div>
+                    </div>
+                    <!-- FOTO 5 -->
+                    <div class="carousel-slide">
+                        <div class="cinema-photo" style="background-image: url('fotos/5.jpg');"></div>
+                        <div class="cinema-subtitle">
+                            <p>« Por los caminos difíciles donde estuviste firme. »</p>
+                        </div>
+                    </div>
+                    <!-- FOTO 6 -->
+                    <div class="carousel-slide">
+                        <div class="cinema-photo" style="background-image: url('fotos/6.jpg');"></div>
+                        <div class="cinema-subtitle">
+                            <p>« Gracias por ser mi compañera incondicional. »</p>
+                        </div>
+                    </div>
+                    <!-- FOTO 7 -->
+                    <div class="carousel-slide">
+                        <div class="cinema-photo" style="background-image: url('fotos/7.jpg');"></div>
+                        <div class="cinema-subtitle">
+                            <p>« Y gracias por enseñarme en qué debo mejorar día a día. »</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="film-perforations bottom"></div>
+            </div>
+        </section>
+
+        <!-- PANTALLA 4: La Carta (Fondo 8.jpg con texto completo) -->
+        <section id="screen-4" class="screen oled-screen layout-letter">
+            <div class="screen-bg-blur-ambient" style="background-image: url('fotos/8.jpg');"></div>
+            
+            <div class="content-wrapper centered bg-scrim-overlay">
+                <div class="letter-container" id="letter-box">
+                    <div class="m3-card-blur-header">
+                        <div class="m3-header-text">
+                            <h3>Desde el corazón</h3>
+                            <p>Para: Bleydis</p>
+                        </div>
+                    </div>
+                    <div class="letter-body-scroll">
+                        <p>No quiero escribirte para pedirte que olvides todo lo que pasó. Sé que mis dudas, mi desconfianza y la forma en que reaccioné nos hicieron mucho daño, y me arrepiento de corazón. Ojalá hubiera entendido antes que el miedo a perderte me estaba convirtiendo en la persona que nunca quise ser contigo.</p>
+                        
+                        <p>Solo quería pedirte algo, y si no nace de tu corazón aceptarlo, lo voy a respetar.</p>
+                        
+                        <p class="letter-highlight">Si todavía es posible, me gustaría invitarte a cenar por nuestros 11 meses. No para convencerte de volver, ni para discutir. Solo para compartir un momento en calma, agradecerte por todo lo bonito que vivimos y pedirte perdón mirándote a los ojos.</p>
+                        
+                        <p>Si tu respuesta es no, la voy a aceptar. Solo quería que supieras que estos 11 meses fueron los más felices de mi vida y que siempre voy a estar agradecido por haberlos vivido a tu lado.</p>
+                        
+                        <p style="font-style: italic; text-align: center; margin-top: 24px; color: #FFF; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 16px;">
+                            « Siempre guardaré lo mejor de nosotros. »
+                        </p>
+                    </div>
+                </div>
+                <button class="m3-btn m3-btn-filled hidden" id="btn-to-screen5">
+                    <span class="m3-btn-label">Continuar</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- PANTALLA 5: Propuesta Interactiva -->
+        <section id="screen-5" class="screen interactive-screen">
+            <div class="content-wrapper centered" id="proposal-container">
+                <div class="m3-dialog-card">
+                    <h2 class="m3-dialog-title">¿ Quieres acompañarme a pasar un momento agradable negrita bella?</h2>
+                    <p class="m3-dialog-supporting-text">Ponte como siempre mi amor, Bien hermosa.</p>
+                    
+                    <!-- Formulario invisible para capturar la respuesta -->
+                    <form id="email-form" style="display:none;">
+                        <input type="text" name="Respuesta" value="Bleydis aceptó la invitación a comer ❤️">
+                        <input type="hidden" name="_captcha" value="false">
+                    </form>
+
+                    <div class="m3-dialog-actions">
+                        <button class="m3-btn m3-btn-filled" id="btn-yes">
+                            <span class="m3-btn-label" id="label-yes">Sí, acepto</span>
+                        </button>
+                        <button class="m3-btn-tonal" id="btn-no">
+                            <span class="m3-btn-label">No</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-wrapper centered hidden" id="success-container">
+                <div class="m3-dialog-card success-card">
+                    <div class="success-message-flow">
+                        <p>Gracias por aceptar.</p>
+                        <p>Y pase lo que pase...</p>
+                        <p class="success-highlight-text">Gracias por estos 11 meses.</p>
+                    </div>
+                    <button class="m3-btn m3-btn-filled final-action-btn">
+                        <span class="m3-btn-label">Nos vemos a las 5</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <audio id="app-audio" src="fotos/idilio.mp3" preload="auto"></audio>
+
+    <script src="script.js"></script>
+</body>
+</html>
