@@ -1,4 +1,14 @@
-document.addEventListener('DOMContentLoaded', () => {
+window.addEventListener('load', () => {
+    
+    // Ocultar el Loader suavemente una vez que todo esté cargado
+    const loader = document.getElementById('app-loader');
+    if (loader) {
+        setTimeout(() => {
+            loader.classList.add('fade-out');
+        }, 500); // Un pequeño retraso de medio segundo para asegurar suavidad visual
+    }
+
+    // === 1. CONTROL DE AUDIO (IDILIO.MP3) ===
     const audioTrack = document.getElementById('app-audio');
     const canvas = document.getElementById('effectsCanvas');
     const ctx = canvas.getContext('2d');
